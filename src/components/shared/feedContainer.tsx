@@ -56,7 +56,7 @@ const PostCard: React.FC<{ item: Post }> = ({ item }) => {
     const mainImage = hasMedia ? item.media[0].media_url : null;
 
     // Fallback avatar URL if leader_profile_pic is missing
-    const avatarUrl = item.leader_profile_pic || `https://ui-avatars.com/api/?name=${encodeURIComponent(item.leader_name)}`;
+    // const avatarUrl = item.leader_profile_pic || `https://ui-avatars.com/api/?name=${encodeURIComponent(item.leader_name)}`;
 
     return (
         <article className="post-card">

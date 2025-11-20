@@ -15,7 +15,7 @@ interface PostCreationProps {
     onClose: () => void; 
 }
 
-const PostCreationScreen: React.FC<PostCreationProps> = ({ leaderName, leaderAvatarUrl, onClose }) => {
+const PostCreationScreen: React.FC<PostCreationProps> = ({ leaderName, onClose }) => {
     const [body, setBody] = useState('');
     const [files, setFiles] = useState<PreviewFile[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
