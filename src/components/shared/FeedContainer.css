@@ -1,0 +1,117 @@
+/* FeedContainer.css */
+
+.feed-container {
+    max-width: 600px; /* Constrain the feed width for a mobile-like experience */
+    margin: 0 auto;
+    padding-top: 60px; /* Add top padding to avoid overlap with fixed top bar */
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.post-card {
+    background-color: #ffffff;
+    margin-bottom: 8px; /* Separator between cards */
+    padding-top: 12px;
+    border-bottom: 1px solid #eee; /* Light divider */
+}
+
+/* Header */
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    margin-bottom: 8px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #ddd;
+    object-fit: cover;
+}
+
+.header-text-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.leader-name {
+    font-weight: bold;
+    font-size: 15px;
+    color: #000;
+}
+
+.timestamp {
+    font-weight: normal;
+    color: #666;
+    font-size: 13px;
+    margin-left: 4px;
+}
+
+/* Body */
+.body-text {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #333;
+    padding: 0 16px;
+    margin-bottom: 10px;
+}
+
+/* Media */
+.post-image {
+    width: 100%;
+    /* Subtract padding if needed, but often full-width is preferred for feeds */
+    max-height: 250px; 
+    object-fit: cover;
+    background-color: #eee;
+    margin-bottom: 12px;
+}
+
+/* Footer (Actions) */
+.footer {
+    display: flex;
+    align-items: center;
+    padding: 0 16px 12px;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #666;
+    padding: 0;
+}
+
+.action-button:hover {
+    color: #008000; /* Subtle hover effect */
+}
+
+.action-text {
+    margin-left: 6px;
+    font-size: 14px;
+    color: #666;
+    min-width: 30px;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+/* Icons */
+.icon {
+    /* Adjust icon size/style if using font icons */
+    font-size: 24px;
+}
+
+/* Loading/Empty State */
+.loading-center, .empty-text {
+    text-align: center;
+    padding-top: 50px;
+}

@@ -1,0 +1,152 @@
+/* PostCreationScreen.css */
+
+.post-screen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow-y: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.close-button, .submit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    font-size: 24px;
+    color: #333;
+}
+
+.submit-button {
+    background-color: #008000;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: opacity 0.3s;
+}
+
+.submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Content Area */
+.content-area {
+    padding: 16px;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 70px;
+}
+
+.leader-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.leader-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    background-color: #ddd;
+}
+
+.message-input {
+    width: 100%;
+    min-height: 150px;
+    border: none;
+    resize: none;
+    font-size: 16px;
+    padding: 0;
+    margin-bottom: 20px;
+    outline: none; /* Remove focus ring */
+}
+
+/* Action Bar */
+.action-bar {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    border-top: 1px solid #eee;
+    background-color: white;
+}
+
+.action-bar-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 15px;
+    padding: 8px;
+    color: #666;
+    font-size: 24px;
+}
+
+.action-bar-button input[type="file"] {
+    display: none;
+}
+
+.group-dropdown {
+    margin-left: auto; /* Push to the right */
+    background-color: #e6f2e6; /* Light green background */
+    color: #008000;
+    border: 1px solid #008000;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.file-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.file-preview {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.file-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-file-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+}

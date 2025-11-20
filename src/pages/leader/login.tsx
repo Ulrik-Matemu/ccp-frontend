@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AlertCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -15,6 +16,7 @@ const KaribuLogin = () => {
     });
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
     // Validation functions
     const validateIdentifier = (value: string) => {
@@ -96,7 +98,7 @@ const KaribuLogin = () => {
         setErrors({ identifier: '', password: '', general: '' });
 
         try {
-            const response = await fetch('http://localhost:3000/api/auth/leader/login', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}api/auth/leader/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -115,8 +117,9 @@ const KaribuLogin = () => {
             }
 
             // Store token and leader data (in-memory for demo)
-            console.log('Login successful:', data);
-            alert('Umeingia kikamilifu!');
+            console.log('Login successful: For Dev:You can log data here', data);
+            localStorage.setItem('token', data.token);
+            navigate('/home');
 
             // In production, redirect to dashboard or home page
             // window.location.href = '/dashboard';
@@ -162,7 +165,7 @@ const KaribuLogin = () => {
                         {/* Identifier Field */}
                         <div>
                             <label htmlFor="identifier" className="block text-lg font-medium text-gray-700 mb-2">
-                                Jina
+                                Jina/Barua pepe
                             </label>
                             <input
                                 type="text"
