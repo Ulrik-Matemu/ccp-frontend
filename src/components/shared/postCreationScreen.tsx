@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { IoClose, IoImageOutline, IoAttach, IoCloseCircle } from 'react-icons/io5';
 import './PostCreationScreen.css';
+import { useNavigate } from 'react-router-dom';
 
 // --- TYPES (for file handling) ---
 interface PreviewFile extends File {
@@ -20,6 +21,25 @@ const PostCreationScreen: React.FC<PostCreationProps> = ({ leaderName, onClose }
     const [files, setFiles] = useState<PreviewFile[]>([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const isLeader = localStorage.getItem('isLeader');
+    let userId;
+    if (isLeader === 'true') {
+        userId = localStorage.getItem('leaderId');
+    } else {
+        userId = localStorage.getItem('citizenId');
+    }
+    const citizenId = Number(userId);
+
+    const navigate = useNavigate();
+
+
+    const cta = () => {
+        const isLeader = localStorage.getItem('isLeader');
+        if (isLeader === 'true') {
+            return 'Tuma taarifa kwa wananchi wako';
+        }
+        return 'Tuma ujumbe kwa kiongozi wako';
+    }
 
     // --- UTILITY FUNCTIONS ---
 
@@ -67,8 +87,10 @@ const PostCreationScreen: React.FC<PostCreationProps> = ({ leaderName, onClose }
                 body: formData,
             });
 
+           
             if (!response.ok) {
                 // Handle specific API errors here
+                
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Failed to create post');
             }
@@ -84,6 +106,36 @@ const PostCreationScreen: React.FC<PostCreationProps> = ({ leaderName, onClose }
             setIsSubmitting(false);
         }
     };
+
+    const handleSubmitMessage = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}api/messages/start`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    leaderId: 1,
+                    message: body,
+                    citizenId: citizenId,
+                }),
+            });
+            if (response.status === 400) {
+                navigate("/messages")
+                return;
+            }
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log('Message sent successfully:', data);
+            navigate("/messages")
+        } catch (error) {
+            console.error('Error sending message:', error);
+            alert(`Error sending message: ${error instanceof Error ? error.message : 'Unknown error'}`);
+        }
+    }
 
     const isButtonDisabled = isSubmitting || (!body.trim() && files.length === 0);
 
@@ -101,7 +153,9 @@ const PostCreationScreen: React.FC<PostCreationProps> = ({ leaderName, onClose }
                 </button>
                 <button 
                     className="submit-button" 
-                    onClick={handleSubmit} 
+                    onClick={
+                        isLeader === 'true' ? handleSubmit : handleSubmitMessage
+                    } 
                     disabled={isButtonDisabled}
                 >
                     {isSubmitting ? 'Tuma...' : 'Tuma'}
@@ -117,7 +171,7 @@ const PostCreationScreen: React.FC<PostCreationProps> = ({ leaderName, onClose }
                         className="leader-avatar" 
                     />
                     {/* Placeholder text area, matching the wireframe's flow */}
-                    <p>{`Tuma taarifa yako kwa wananchi wako...`}</p> 
+                    <p>{cta()}</p> 
                 </div>
 
                 <textarea

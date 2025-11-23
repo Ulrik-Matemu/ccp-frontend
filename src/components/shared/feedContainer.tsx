@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// ⚠️ IMPORTANT: You must install React Icons if you haven't: npm install react-icons
 import { 
     IoHeartOutline, 
     IoChatbubbleOutline, 
@@ -7,9 +6,9 @@ import {
     IoBookmarkOutline,
     IoEllipsisVertical
 } from 'react-icons/io5'; 
-import './FeedContainer.css'; // Import the CSS file
+import './FeedContainer.css'; 
 
-// --- TYPES (Keep these as they match the backend) ---
+
 interface PostMedia {
     media_url: string;
     media_type: 'image' | 'video' | 'document';
@@ -76,9 +75,7 @@ const PostCard: React.FC<{ item: Post }> = ({ item }) => {
                         <span className="timestamp">{formatTimeAgo(item.created_at)}</span>
                     </p>
                 </div>
-                <button className="action-button" title="More options">
-                    <IoEllipsisVertical className="icon" size={20} />
-                </button>
+               
             </header>
 
             {/* Body Text */}

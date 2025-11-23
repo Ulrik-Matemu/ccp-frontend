@@ -11,7 +11,7 @@
 .post-card {
     background-color: #ffffff;
     margin-bottom: 8px; /* Separator between cards */
-    padding-top: 12px;
+    padding: 12px 16px 0 16px;
     border-bottom: 1px solid #eee; /* Light divider */
 }
 
@@ -19,7 +19,6 @@
 .card-header {
     display: flex;
     align-items: center;
-    padding: 0 16px;
     margin-bottom: 8px;
 }
 
@@ -57,7 +56,6 @@
     font-size: 15px;
     line-height: 1.4;
     color: #333;
-    padding: 0 16px;
     margin-bottom: 10px;
 }
 
@@ -69,6 +67,7 @@
     object-fit: cover;
     background-color: #eee;
     margin-bottom: 12px;
+    border-radius: 5px;
 }
 
 /* Footer (Actions) */
