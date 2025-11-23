@@ -275,7 +275,7 @@ export default function MessagingComponent({
             <div ref={endRef} />
           </div>
 
-          <div className="p-5  border-t border-green-100 flex items-center gap-3">
+          <div className="p-5 fixed bottom-18 w-full md:w-[900px]  border-t border-green-100 flex items-center gap-3">
             <div className="flex-1 flex items-center bg-[#a5d6bc] rounded-full border-2 border-transparent focus-within:border-green-500 focus-within:bg-white focus-within:shadow-lg transition-all">
               <input
                 ref={inputRef}
@@ -283,7 +283,7 @@ export default function MessagingComponent({
                 onChange={(e) => setText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type a message..."
-                className="flex-1 px-5 py-3 h-12 bg-transparent outline-none text-[15px] text-gray-800 placeholder-gray-400"
+                className=" flex-1 px-5 py-3 h-12 bg-transparent outline-none text-[15px] text-gray-800 placeholder-gray-400"
               />
             </div>
             <button
