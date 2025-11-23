@@ -276,14 +276,44 @@ export default function MessagingComponent({
           </div>
 
           <div className="p-5 fixed bottom-18 w-full md:w-[900px]  border-t border-green-100 flex items-center gap-3">
-            <div className="flex-1 flex items-center bg-[#a5d6bc] rounded-full border-2 border-transparent focus-within:border-green-500 focus-within:bg-white focus-within:shadow-lg transition-all">
+            <div
+              className="flex-1 flex items-center bg-[#a5d6bc] rounded-full border-2 border-transparent focus-within:border-green-500 focus-within:bg-white focus-within:shadow-lg transition-all"
+              style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+            >
               <input
-                ref={inputRef}
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Type a message..."
-                className=" flex-1 px-5 py-3 h-12 bg-transparent outline-none text-[15px] text-gray-800 placeholder-gray-400"
+              ref={inputRef}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Type a message..."
+              inputMode="text"
+              enterKeyHint="send"
+              autoComplete="off"
+              className="flex-1 px-5 py-3 h-12 bg-transparent outline-none text-[15px] text-gray-800 placeholder-gray-400"
+              onFocus={(e) => {
+                // Try to ensure the input is visible above the mobile keyboard.
+                // Use VisualViewport resize to keep it centered while keyboard animates.
+                const focusScroll = () => {
+                setTimeout(() => inputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 50);
+                };
+
+                if (typeof window !== 'undefined' && (window as any).visualViewport) {
+                const vv = (window as any).visualViewport;
+                vv.addEventListener('resize', focusScroll);
+                // store handler for cleanup on blur
+                (e.target as any).__vvHandler = focusScroll;
+                } else {
+                focusScroll();
+                }
+              }}
+              onBlur={(e) => {
+                if (typeof window !== 'undefined' && (window as any).visualViewport) {
+                const vv = (window as any).visualViewport;
+                const handler = (e.target as any).__vvHandler;
+                if (handler) vv.removeEventListener('resize', handler);
+                (e.target as any).__vvHandler = null;
+                }
+              }}
               />
             </div>
             <button
