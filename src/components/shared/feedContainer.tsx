@@ -4,7 +4,6 @@ import {
     IoChatbubbleOutline, 
     IoShareSocialOutline, 
     IoBookmarkOutline,
-    IoEllipsisVertical
 } from 'react-icons/io5'; 
 import './FeedContainer.css'; 
 

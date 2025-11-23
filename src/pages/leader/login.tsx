@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, {  useState } from 'react';
 import { AlertCircle, User, LogIn, UserPlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -47,7 +47,7 @@ interface CustomMessageProps {
 }
 
 // --- CONFIGURATION ---
-const API_BASE_URL = 'http://localhost:3000/api/'; // Placeholder: Replace with your actual VITE_API_URL
+
 
 // Helper for displaying custom messages (replaces alert())
 const CustomMessage: React.FC<CustomMessageProps> = ({ message, onClose }) => (
