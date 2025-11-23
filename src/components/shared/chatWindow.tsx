@@ -64,7 +64,7 @@ export default function MessagingComponent({
   useEffect(() => {
     if (!selectedUser) return;
 
-    fetch(`${import.meta.env.VITE_LOCAL_API_URL}api/messages/conversation/${selectedUser}`, {
+    fetch(`${import.meta.env.VITE_API_URL}api/messages/conversation/${selectedUser}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(r => r.json())
