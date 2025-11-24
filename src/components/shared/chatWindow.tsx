@@ -327,7 +327,7 @@ export default function MessagingComponent({
 
                 // Fallback to HTTP POST
                 try {
-                  const res = await fetch(`${import.meta.env.VITE_LOCAL_API_URL}api/messages/send`, {
+                  const res = await fetch(`${import.meta.env.VITE_API_URL}api/messages/send`, {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",
