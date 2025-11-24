@@ -167,7 +167,7 @@ const LeaderLogin: React.FC<ViewProps> = ({ setView }) => {
                 <div className="text-center mb-8">
                     <div className="relative inline-block mb-4">
                         <div className="w-32 h-32 rounded-full overflow-hidden mx-auto bg-green-100 flex items-center justify-center">
-                            <User className="w-16 h-16 text-green-600" />
+                            <img src='/images/salim-mussa.jpeg' alt="Leader Avatar" className="w-32 h-32 object-cover" />
                         </div>
                     </div>
                     <h1 className="text-xl font-bold text-gray-800">Karibu Kiongozi</h1>
@@ -385,7 +385,7 @@ const CitizenLogin: React.FC<ViewProps> = ({ setView }) => {
                 <div className="text-center mb-8">
                     <div className="relative inline-block mb-4">
                         <div className="w-32 h-32 rounded-full overflow-hidden mx-auto bg-green-100 flex items-center justify-center">
-                            <User className="w-16 h-16 text-green-600" />
+                            <img src='/images/salim-mussa.jpeg' alt="Leader Avatar" className="w-32 h-32 object-cover" />
                         </div>
                     </div>
                     <h1 className="text-xl font-bold text-gray-800">Karibu Raia</h1>
