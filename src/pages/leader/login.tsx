@@ -1,5 +1,5 @@
 import React, {  useState } from 'react';
-import { AlertCircle, User, LogIn, UserPlus } from 'lucide-react';
+import { AlertCircle, LogIn, UserPlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // --- TYPE DEFINITIONS ---
